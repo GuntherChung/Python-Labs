@@ -13,11 +13,12 @@ limit = 15
 numbers = generate_random_numbers(limit)
 print("Generated numbers:", numbers)
 
-total = 0
-for index, n in enumerate(numbers):
-    total+= n
-    print(f"{total - n } + {n} = {total}")
+# Iterates over provided list to add up all of the numbers.
+def sum_of_list(list):
+    total = 0
+    for index, n in enumerate(list):
+        total+= n   # Addition
+        print(f"{total - n } + {n} = {total}")  # Process print out
+    return print(f"The final total is {total}") # Final product
 
-    # Check if n is the last element in the list
-    if index == len(numbers) - 1:
-        print(f"The final total is {total}")
+sum_of_list(numbers)

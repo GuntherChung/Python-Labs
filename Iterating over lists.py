@@ -6,10 +6,11 @@ def generate_random_numbers(limit):
     while len(numbers) < limit:
         new_number = random.randint(1,10)   # random number between 1 and 10
         numbers.append(new_number)  # Add random number to number
-    return numbers
+    sorted_numbers = sorted(numbers) # logarithmically sort list of numbers 
+    return sorted_numbers
 
 # Display the generated numbers
-limit = 15
+limit = 10
 numbers = generate_random_numbers(limit)
 print("Generated numbers:", numbers)
 

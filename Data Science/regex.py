@@ -235,7 +235,7 @@ test_str = ("777 Brockton Avenue, Abington MA 2351\n"
 	"4538 Us Hwy 231, Wetumpka AL 36092\n"
 	"2575 Us Hwy 43, Winfield AL 35594")
 
-regex = r"(?P<house_number>\d*.)(?P<street>\w+ .+,)(?P<city>\s\w+ .+)(?P<zipcode>\d{4})"
+regex = r"(?P<house_number>\d+.) (?P<street>\w+ .+), (?P<city>\w+) (?P<state>[A-Z]{2}) (?P<zipcode>\d+)"
 
 matches = re.findall(regex, test_str)
 

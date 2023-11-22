@@ -17,13 +17,15 @@ class MathProcesses:
         self.numbers = []
 
     def generate_random_numbers(self):  # define function generate_random_numbers
-        while len(self.numbers) < self.limit:
-            new_number = random.randint(1, 10)
-            self.numbers.append(new_number)
-        self.numbers = sorted(self.numbers)
-        print(f"generated random numbers: {self.numbers}")
+        """Generate random numbers that will be stored in self.numbers as a list.
+        """
+        while len(self.numbers) < self.limit:   # While the length of self.numbers is less than self.limit
+            new_number = random.randint(1, 10)      # Assign a random int between 1:10 to a new variable "new_number" 
+            self.numbers.append(new_number)         # Append new_number to self.numbers
+        self.numbers = sorted(self.numbers)     # Sort the items in self.numbers
+        print(f"generated random numbers: {self.numbers}")  # Print results 
 
-    def calculate_sum_of_list(self):
+    def calculate_sum_of_list(self):    # define function calculate_sum_of_list
         total = 0
         for index, n in enumerate(self.numbers):
             total += n

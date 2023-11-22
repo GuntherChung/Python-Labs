@@ -1,11 +1,22 @@
 import random
 
 class MathProcesses:
+    """ The purpose of this class is to hold multiple math processing methods.
+    The general purpose of this overall goal is brush up on code techniques.
+    Also, by writing a class with multiple methods, I am to strengthen my skills
+    with dependencies and nesting.  
+    """
     def __init__(self, limit):
+        """The initialization of the self for MathProcess
+
+        Args:
+            limit (int): Take in a value for the limit for the length for the
+            list in the function generate_random_numbers.
+        """
         self.limit = limit
         self.numbers = []
 
-    def generate_random_numbers(self):
+    def generate_random_numbers(self):  # define function generate_random_numbers
         while len(self.numbers) < self.limit:
             new_number = random.randint(1, 10)
             self.numbers.append(new_number)

@@ -1,18 +1,60 @@
-import calendar
 import pandas as pd
-from datetime import datetime
+class Bill:
+    def __init__(self, name, amount, due_date):
+        self.name = name
+        self.amount = amount
+        self.due_date = due_date
 
+def capture_income():
+    while True:
+        try:
+            income = float(input("Enter your monthly income: "))
+            return income
+        except ValueError:
+            print("Please enter a valid number.")
 
-#Pull todays date
+def capture_bill():
+    name = input("Enter the bill name: ")
+    while True:
+        try:
+            amount = float(input("Enter the bill amount: "))
+            break
+        except ValueError:
+            print("Please enter a valid number.")
+    due_date = input("Enter the bill due date (e.g., 2024-08-01): ")
+    return Bill(name, amount, due_date)
 
-today = datetime.today().strftime('%Y-%m-%d')
-print(today)
+def main():
+    income = capture_income()
+    bills = []
+    allocation = {}
 
-income = pd.Series[660, 0, 0, 0]
-bills = pd.Series[-850,-250,-1000,450]
-due_dates = pd.Series[2, 15, 20, 25]
+    while True:
+        add_bill = input("Do you want to add a bill? (yes/no): ").strip().lower()
+        if add_bill == 'yes':
+            bill = capture_bill()
+            bills.append(bill)
+        elif add_bill == 'no':
+            break
+        else:
+            print("Please enter 'yes' or 'no'.")
 
+    for bill in bills:
+        while True:
+            try:
+                percentage = float(input(f"Enter the percentage of income to allocate for {bill.name}: "))
+                if 0 <= percentage <= 100:
+                    allocation[bill.name] = (percentage / 100) * income
+                    break
+                else:
+                    print("Please enter a percentage between 0 and 100.")
+            except ValueError:
+                print("Please enter a valid number.")
 
-mybudget = pd.concat([income, bills, due_dates], axis = 1)
+    print("\nSummary of Bill Allocations:")
+    for bill in bills:
+        allocated_amount = allocation[bill.name]
+        print(f"Bill: {bill.name}, Amount: {bill.amount}, Due Date: {bill.due_date}, Allocated Amount: {allocated_amount:.2f}")
 
-print(mybudget)
+if __name__ == "__main__":
+    main()
